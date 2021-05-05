@@ -24,7 +24,7 @@ wn.title("Pie")
 wn.tracer(0)
 
 pen = turtle.Turtle()
-pen.setposition(-230,100)
+pen.setposition(-130,100)
 pen.hideturtle()
 pen.speed(0)
 pen.color('white')
@@ -45,7 +45,7 @@ collisions_pen.hideturtle()
 
 #create two block objects
 small = Block(1, turtle.Vec2D(0, 0), turtle.Vec2D(0, 0), 1, "yellow")
-big = Block(100**(n-1), turtle.Vec2D(-0.1, 0), turtle.Vec2D(100, 10*(n-1)), n, "green")
+big = Block(100**(n-1), turtle.Vec2D(-1/(10**(n-1)), 0), turtle.Vec2D(100, 10*(n-1)), n, "green")
 
 block = [small, big]
 blocks = [turtle.Turtle(), turtle.Turtle()]
@@ -59,7 +59,7 @@ while True:
 		blk.draw(blocks[i])
 		i += 1
 
-	if small.position[0] <= -220:			#Check the collision with the wall
+	if small.position[0] <= -120:			#Check the collision with the wall
 		small.velocity *= -1
 		collisions += 1
 		scorestring = "Collisions: %s" %collisions
