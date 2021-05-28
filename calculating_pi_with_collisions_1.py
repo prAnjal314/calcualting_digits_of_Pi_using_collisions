@@ -4,13 +4,13 @@
 import turtle
 from Block import Block
 
-n = 3#int(input("n: "))			#enter the number of digits you want to calculate
+n = int(input("n: "))			#enter the number of digits you want to calculate
 collisions = 0
 
 def isCollision(t1, t2):		#a function to check the collision betwwen the blocks
 	distance = abs(t1.xcor()-t2.xcor())
 
-	if distance <= 10*(n+1):
+	if distance <= 10*(n+1)+1:
 		return True
 	else:
 		return False
@@ -44,8 +44,8 @@ collisions_pen.write(scorestring, False, align="left", font=("Arial", 14,"normal
 collisions_pen.hideturtle()
 
 #create two block objects
-small = Block(1, turtle.Vec2D(0, 0), turtle.Vec2D(0, 0), 1, "yellow")
-big = Block(100**(n-1), turtle.Vec2D(-1/(10**(n-1)), 0), turtle.Vec2D(100, 10*(n-1)), n, "green")
+small = Block(1, turtle.Vec2D(0, 0), turtle.Vec2D(0, 1), 1, "yellow")
+big = Block(100**(n-1), turtle.Vec2D(-2/(10**(n-1)), 0), turtle.Vec2D(100, 10*(n-1)+1), n, "green")
 
 block = [small, big]
 blocks = [turtle.Turtle(), turtle.Turtle()]
@@ -59,7 +59,7 @@ while True:
 		blk.draw(blocks[i])
 		i += 1
 
-	if small.position[0] <= -120:			#Check the collision with the wall
+	if small.position[0] <= -119:			#Check the collision with the wall
 		small.velocity *= -1
 		collisions += 1
 		scorestring = "Collisions: %s" %collisions
